@@ -54,6 +54,10 @@
       })
    })
 
+    clientSocket.on('connect', () => {
+      console.log('conectado')
+   })
+
     clientSocket.on('mensaje-from-server', (data) => {
       
       mensajes.innerHTML += `<li> ${ data.texto }</li>`

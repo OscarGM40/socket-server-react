@@ -6,6 +6,7 @@ const http = require('http');
 //3-Configuracion del servidor socket
 const socketio = require('socket.io');
 const Sockets = require('./sockets');
+const cors = require('cors')
 
 class Server {
    constructor() {
@@ -18,7 +19,11 @@ class Server {
    }
    //funciones middleware irna en este método
    middlewares(){
+      //indicamos el directorio publico
       this.app.use(express.static(path.resolve(__dirname,'../public')));
+      //habilitamos las CORS
+      this.app.use(cors());
+
    }
    //vamos a extraer en clases la logica de los metodos socket
    configurarSockets() {
